@@ -4,6 +4,7 @@
   "description": "## Overview",
   "main": "index.js",
   "type": "module",
+  
   "scripts": {
     "start": "node index.js"
   },
