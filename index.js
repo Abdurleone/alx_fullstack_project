@@ -13,6 +13,15 @@ const connect = async ()=>{
   }
 };
 
+// listeners
+mongoose.connection.on("disconnected", ()=>{
+    console.log("mongoDB disconnected!!")
+})
+
+mongoose.connection.on("disconnected", ()=>{
+    console.log("mongoDB Connected!!")
+})
+
 app.listen(2704, ()=>{
     connect()
     console.log("Connected to backend!!")
