@@ -18,6 +18,11 @@ mongoose.connection.on("disconnected", ()=>{
     console.log("mongoDB disconnected!!")
 })
 
+// api setup
+app.get("/", (req,res)=>{
+    res.send("Hello")
+})
+
 mongoose.connection.on("connected", ()=>{
     console.log("mongoDB Connected!!")
 })
