@@ -18,7 +18,7 @@ mongoose.connection.on("disconnected", ()=>{
     console.log("mongoDB disconnected!!")
 })
 
-mongoose.connection.on("disconnected", ()=>{
+mongoose.connection.on("connected", ()=>{
     console.log("mongoDB Connected!!")
 })
 
