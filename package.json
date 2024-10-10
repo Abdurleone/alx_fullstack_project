@@ -4,10 +4,6 @@
   "description": "## Overview",
   "main": "index.js",
   "type": "module",
-<<<<<<< HEAD
-=======
-
->>>>>>> b56682a7bd1225be4980956ffbcfc2fc937bc4ab
   "scripts": {
     "start": "nodemon index.js"
   },
