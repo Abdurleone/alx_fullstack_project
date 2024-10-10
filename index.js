@@ -20,7 +20,7 @@ mongoose.connection.on("disconnected", ()=>{
 
 // api setup
 app.get("/", (req,res)=>{
-    res.send("Hello")
+    res.send("Beginning of something spectacular")
 })
 
 mongoose.connection.on("connected", ()=>{
