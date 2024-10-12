@@ -7,7 +7,9 @@
   "name": "alx_fullstack_project",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
   "scripts": {
     "start": "nodemon index.js"
   },
