@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import authRoute from "./routes/auth.js"
 const app = express()
 dotenv.config()
 
@@ -26,6 +27,9 @@ app.get("/", (req,res)=>{
 mongoose.connection.on("connected", ()=>{
     console.log("mongoDB Connected!!")
 })
+
+//middlewares
+app.use("/auth", authRoute)
 
 app.listen(2704, ()=>{
     connect()
