@@ -46,7 +46,7 @@ The **Medical Reporting Web Application** is designed to facilitate the manageme
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/alx-fullstack_project.git
+   git clone https://github.com/abdurleone/alx-fullstack_project.git
    cd alx-fullstack_project
    ```
 
