@@ -32,7 +32,6 @@ mongoose.connection.on("connected", ()=>{
 })
 
 //middlewares
-
 app.use(express.json())
 
 app.use("/api/auth", authRoute)
@@ -40,8 +39,8 @@ app.use("/api/hotels", hotelsRoute)
 app.use("/api/rooms", roomsRoute)
 app.use("/api/users", usersRoute)
 
-app.use((req,res,next)=>{
-    console.log("hi, I'm a middleware")
+app.use((err,req,res,next)=>{
+    return res.status(500).json("Hello error from Handler!")
 })
 
 app.listen(2704, ()=>{
