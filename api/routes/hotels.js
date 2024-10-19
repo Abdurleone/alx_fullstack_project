@@ -48,7 +48,7 @@ router.get("/:id", async (req,res)=>{
 //GET ALL
 router.get("/", async (req,res, next)=>{
 
-    console.log("hi, I'm a hotel route")
+    console.log("hi, I'm a Hotel route")
     next()
     try{
         const hotels = await Hotel.find()
