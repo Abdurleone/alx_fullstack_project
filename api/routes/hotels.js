@@ -1,5 +1,6 @@
 import express from "express"
 import Hotel from "../models/Hotel.js"
+import { createError } from "../../utils/error.js";
 
 const router = express.Router();
 
@@ -47,6 +48,10 @@ router.get("/:id", async (req,res)=>{
 })
 //GET ALL
 router.get("/", async (req,res, next)=>{
+
+    const failed = true
+
+    if (failed) return next(createError(401, "Not Permitted"))
 
     try{
         const hotels = await Hotel.findById(asdefds)
