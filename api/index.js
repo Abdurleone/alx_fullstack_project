@@ -40,7 +40,14 @@ app.use("/api/rooms", roomsRoute)
 app.use("/api/users", usersRoute)
 
 app.use((err,req,res,next)=>{
-    return res.status(500).json("Hello error from Handler!")
+    const errorStatus = err.status || 500
+    const errorMessage = err.message || "something went wrong"
+    return res.status(errorStatus).json({
+        success:false,
+        status: errorStatus,
+        message: errorMessage,
+        stack: err.stack,
+    })
 })
 
 app.listen(2704, ()=>{
