@@ -40,6 +40,10 @@ app.use("/api/hotels", hotelsRoute)
 app.use("/api/rooms", roomsRoute)
 app.use("/api/users", usersRoute)
 
+app.use((req,res,next)=>{
+    console.log("hi, I'm a middleware")
+})
+
 app.listen(2704, ()=>{
     connect()
     console.log("Connected to backend!!")
