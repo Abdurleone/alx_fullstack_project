@@ -8,7 +8,7 @@ const Featured = () => {
 
   return (
     <div className="featured">
-      { loading ? (
+      {loading ? (
         "Loading please wait"
       ) : (
         <>
