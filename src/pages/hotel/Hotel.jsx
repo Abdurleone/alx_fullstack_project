@@ -131,7 +131,7 @@ const Hotel = () => {
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
+                  Located in the real heart of Nairobi, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
