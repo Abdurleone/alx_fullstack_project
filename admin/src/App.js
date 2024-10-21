@@ -8,16 +8,36 @@ import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import { Children } from "react";
+import { AuthContext } from "./context/AuthContext";
+import { Navigate } from 'react-router-dom';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+
+  const ProtectedRoute = ({Children}) =>{
+    const {user} = useContext(AuthContext)
+
+    if(!user) {
+      return <Navigate to="/login" />
+    }
+
+    return Children
+  }
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
+            <Route 
+              index 
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              } 
+            />
             <Route path="login" element={<Login />} />
             <Route path="users">
               <Route index element={<List />} />
