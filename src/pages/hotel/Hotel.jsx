@@ -11,7 +11,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext.js";
 import { AuthContext } from "../../context/AuthContext.js";
