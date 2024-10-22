@@ -4,14 +4,14 @@ import List from "./pages/list/List.jsx";
 import Single from "./pages/single/Single.jsx";
 import New from "./pages/new/New.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import { productInputs, userInputs } from "./formSource.js";
 import "./style/dark.scss";
 import { useContext } from "react";
-import { DarkModeContext } from "./context/darkModeContext";
+import { DarkModeContext } from "./context/darkModeContext.js";
 import { AuthContext } from "./context/AuthContext.js";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
-import NewHotel from "./pages/newHotel/NewHotel";
-import NewRoom from "./pages/newRoom/NewRoom";
+import { hotelColumns, roomColumns, userColumns } from "./datatablesource.js";
+import NewHotel from "./pages/newHotel/newHotel.jsx";
+import NewRoom from "./pages/newRoom/newRoom.jsx";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
