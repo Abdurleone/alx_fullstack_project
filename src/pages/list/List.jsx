@@ -1,11 +1,11 @@
 import "./list.css";
-import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
+import Navbar from "../../components/navbar/Navbar.jsx";
+import Header from "../../components/header/Header.jsx";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
-import SearchItem from "../../components/searchItem/SearchItem";
+import SearchItem from "../../components/searchItem/SearchItem.jsx";
 import useFetch from "../../hooks/useFetch";
 
 const List = () => {
