@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    
+
     // Input validation: Check if username and password are provided
     if (!credentials.username || !credentials.password) {
       setInputError("Please fill in both username and password.");
@@ -35,6 +35,7 @@ const Login = () => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
+      console.error("Login error:", err); // Log the error for debugging
       dispatch({
         type: "LOGIN_FAILURE",
         payload: err.response?.data || { message: "Something went wrong. Please try again." },
@@ -45,30 +46,34 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          onChange={handleChange}
-          value={credentials.username}
-          className="lInput"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          onChange={handleChange}
-          value={credentials.password}
-          className="lInput"
-        />
-        
-        {inputError && <span className="errorMessage">{inputError}</span>} {/* Show input validation error */}
-        
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          {loading ? "Logging in..." : "Login"} {/* Show loading message */}
-        </button>
-        
-        {error && <span className="errorMessage">{error.message}</span>} {/* Show server error message */}
+        <form onSubmit={handleClick}> {/* Wrap inputs and button in a form */}
+          <input
+            type="text"
+            placeholder="Username"
+            id="username"
+            onChange={handleChange}
+            value={credentials.username}
+            className="lInput"
+            aria-label="Username" // Accessibility label
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            onChange={handleChange}
+            value={credentials.password}
+            className="lInput"
+            aria-label="Password" // Accessibility label
+          />
+          
+          {inputError && <span className="errorMessage">{inputError}</span>} {/* Show input validation error */}
+          
+          <button disabled={loading} type="submit" className="lButton"> {/* Change to type "submit" */}
+            {loading ? "Logging in..." : "Login"} {/* Show loading message */}
+          </button>
+          
+          {error && <span className="errorMessage">{error.message}</span>} {/* Show server error message */}
+        </form>
       </div>
     </div>
   );
