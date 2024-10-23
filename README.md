@@ -31,7 +31,7 @@ The **Hotel Booking Web Application** is designed to facilitate the process of f
 - **Database**: MongoDB
 - **Authentication**: JSON Web Tokens (JWT)
 - **Deployment**: Docker, Heroku (or any preferred platform)
-- **Testing**: Jest, Supertest <!-- Added Testing Technologies -->
+- **Testing**: Jest, Supertest 
 - **Version Control**: Git and GitHub
 
 ## Installation
@@ -61,8 +61,10 @@ The **Hotel Booking Web Application** is designed to facilitate the process of f
    Create a `.env` file in the root directory and add the following:
 
    ```env
-   PORT=3000
-   MONGO_URI=mongodb://localhost:27017/hotel-booking
+   http://localhost:2704/api
+   http://localhost:3000/client
+   http://localhost:3001/admin
+   MONGO_URI= MONGO = mongodb+srv://abdurleone:SaidGumba02!@cluster0.qukeyv1.mongodb.net/
    JWT_SECRET=your_jwt_secret
    ```
 
@@ -220,5 +222,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 1. Added **Testing** section in the README with provisions for **Jest** and **Supertest**.
 2. Included instructions on how to install testing libraries, write unit tests, and run them using **yarn**.
 3. Provided an example of unit tests for an authentication route.
-
-This setup should help you ensure that your application is working correctly with unit tests in place!
