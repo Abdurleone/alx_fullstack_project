@@ -9,8 +9,8 @@ import { register, login } from './authController.js';
 const app = express();
 app.use(express.json());
 
-app.post('/register', register);
-app.post('/login', login);
+app.post('/register.js', register);
+app.post('/login.js', login);
 
 describe('Auth Controller', () => {
   beforeEach(() => {
