@@ -2,7 +2,7 @@ import request from 'supertest';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import mockingoose from 'mockingoose';
-import User from '../models/User.js';
+import User from '../../models/User.js';
 import express from 'express';
 import { register, login } from './authController.js';
 
