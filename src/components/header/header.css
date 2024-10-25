@@ -12,10 +12,6 @@
   margin: 20px 0px 100px 0px;
 }
 
-.headerContainer.listMode {
-  margin: 20px 0px 0px 0px;
-}
-
 .headerList {
   display: flex;
   justify-content: center; /* Center the items horizontally */
@@ -38,15 +34,6 @@
   color: #febb02; /* Change color to yellow on hover */
 }
 
-.headerListItem:hover a {
-  color: #febb02; /* Ensure link color changes on hover */
-}
-
-.headerListItem a {
-  color: inherit; /* Ensure links inherit the color from the parent */
-  text-decoration: none; /* Remove underline from links */
-}
-
 .headerDesc {
   margin: 20px 0px;
 }
@@ -58,6 +45,26 @@
   border: none;
   padding: 10px;
   cursor: pointer;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px; /* Space below the buttons */
+}
+
+.headerRegisterBox {
+  border: 2px solid #febb02; /* Border to distinguish the register box */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Padding inside the box */
+  background-color: transparent; /* No background color initially */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  color: #febb02; /* Set text color initially */
+}
+
+.headerRegisterBox:hover {
+  background-color: #febb02; /* Highlight color on hover */
+  color: black; /* Change text color on hover */
 }
 
 .headerSearch {
@@ -108,7 +115,6 @@
   background-color: white;
   color: gray;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
 }
 

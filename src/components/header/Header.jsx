@@ -36,17 +36,14 @@ const Header = ({ type }) => {
 
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const { dispatch } = useContext(SearchContext);
 
   const handleOption = (name, operation) => {
-    setOptions((prev) => {
-      return {
-        ...prev,
-        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-      };
-    });
+    setOptions((prev) => ({
+      ...prev,
+      [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+    }));
   };
-
-  const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
@@ -55,11 +52,7 @@ const Header = ({ type }) => {
 
   return (
     <div className="header">
-      <div
-        className={
-          type === "list" ? "headerContainer listMode" : "headerContainer"
-        }
-      >
+      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         <div className="headerList">
           <a href="https://tripadvisor.com" className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
@@ -82,23 +75,35 @@ const Header = ({ type }) => {
             <span>Airport taxis</span>
           </a>
         </div>
+        
         {type !== "list" && (
           <>
-            <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
-            </h1>
+            <h1 className="headerTitle">A lifetime of discounts? It's Genius.</h1>
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Abdurleone account.
+              Get rewarded for your travels – unlock instant savings of 10% or more with a free Abdurleone account.
             </p>
-            {!user && (
-              <button
-                className="headerBtn"
-                onClick={() => navigate("/login")} // Redirect to login page
-              >
-                Sign in
-              </button>
-            )}
+
+            <div className="headerButtons">
+              {!user && (
+                <button
+                  className="headerBtn"
+                  onClick={() => navigate("/login")} // Redirect to login page
+                >
+                  Sign in
+                </button>
+              )}
+              {!user && (
+                <div className="headerRegisterBox">
+                  <button
+                    className="headerBtn"
+                    onClick={() => navigate("/register")} // Redirect to register page
+                  >
+                    Register
+                  </button>
+                </div>
+              )}
+            </div>
+
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -114,10 +119,9 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
-                >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
-                  dates[0].endDate,
-                  "MM/dd/yyyy"
-                )}`}</span>
+                >
+                  {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
+                </span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
@@ -147,9 +151,7 @@ const Header = ({ type }) => {
                         >
                           -
                         </button>
-                        <span className="optionCounterNumber">
-                          {options.adult}
-                        </span>
+                        <span className="optionCounterNumber">{options.adult}</span>
                         <button
                           className="optionCounterButton"
                           onClick={() => handleOption("adult", "i")}
@@ -168,9 +170,7 @@ const Header = ({ type }) => {
                         >
                           -
                         </button>
-                        <span className="optionCounterNumber">
-                          {options.children}
-                        </span>
+                        <span className="optionCounterNumber">{options.children}</span>
                         <button
                           className="optionCounterButton"
                           onClick={() => handleOption("children", "i")}
@@ -189,9 +189,7 @@ const Header = ({ type }) => {
                         >
                           -
                         </button>
-                        <span className="optionCounterNumber">
-                          {options.room}
-                        </span>
+                        <span className="optionCounterNumber">{options.room}</span>
                         <button
                           className="optionCounterButton"
                           onClick={() => handleOption("room", "i")}
