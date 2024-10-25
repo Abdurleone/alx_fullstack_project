@@ -21,29 +21,30 @@
   height: max-content;
 }
 
-.lsTitle{
+.lsTitle {
   font-size: 20px;
   color: #555;
   margin-bottom: 10px;
 }
 
-.lsItem{
+.lsItem {
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-bottom: 10px;
 }
 
-.lsItem>label{
+.lsItem > label {
   font-size: 12px;
 }
 
-.lsItem>input{
+.lsItem > input {
   height: 30px;
   border: none;
   padding: 5px;
 }
-.lsItem>span{
+
+.lsItem > span {
   height: 30px;
   padding: 5px;
   background-color: white;
@@ -52,11 +53,11 @@
   cursor: pointer;
 }
 
-.lsOptions{
+.lsOptions {
   padding: 10px;
 }
 
-.lsOptionItem{
+.lsOptionItem {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -64,11 +65,11 @@
   font-size: 12px;
 }
 
-.lsOptionInput{
+.lsOptionInput {
   width: 50px;
 }
 
-.listSearch>button{
+.listSearch > button {
   padding: 10px;
   background-color: #0071c2;
   color: white;
@@ -80,4 +81,66 @@
 
 .listResult {
   flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Hover effect for list search items */
+.searchItem {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.searchItem:hover {
+  transform: scale(1.02);
+}
+
+.searchItemImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+.searchItem:hover .searchItemImg {
+  opacity: 0.8;
+}
+
+.searchItemTitle {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.searchItem:hover .searchItemTitle {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.searchItemTitle h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.searchItemTitle h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.searchItemTitle span {
+  font-size: 12px;
+  font-weight: 500;
 }

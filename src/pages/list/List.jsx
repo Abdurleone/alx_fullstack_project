@@ -10,15 +10,15 @@ import useFetch from "../../hooks/useFetch.js";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
+  const [destination, setDestination] = useState(location.state?.destination || "");
+  const [dates, setDates] = useState(location.state?.dates || []);
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options);
+  const [options, setOptions] = useState(location.state?.options || {});
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
   const handleClick = () => {
@@ -26,7 +26,7 @@ const List = () => {
   };
 
   return (
-    <div>
+    <div className="list">
       <Navbar />
       <Header type="list" />
       <div className="listContainer">
@@ -35,14 +35,19 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input 
+                value={destination} 
+                onChange={(e) => setDestination(e.target.value)} 
+                placeholder="Enter destination" 
+                type="text" 
+              />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
               <span onClick={() => setOpenDate(!openDate)}>{`${format(
-                dates[0].startDate,
+                dates[0]?.startDate || new Date(),
                 "MM/dd/yyyy"
-              )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+              )} to ${format(dates[0]?.endDate || new Date(), "MM/dd/yyyy")}`}</span>
               {openDate && (
                 <DateRange
                   onChange={(item) => setDates([item.selection])}
@@ -107,7 +112,9 @@ const List = () => {
           </div>
           <div className="listResult">
             {loading ? (
-              "loading"
+              "Loading..."
+            ) : error ? (
+              <div>Error loading data. Please try again.</div>
             ) : (
               <>
                 {data.map((item) => (
