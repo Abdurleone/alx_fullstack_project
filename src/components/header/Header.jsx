@@ -37,7 +37,6 @@ const Header = ({ type }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
-
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -62,26 +61,26 @@ const Header = ({ type }) => {
         }
       >
         <div className="headerList">
-          <div className="headerListItem active">
+          <a href="https://tripadvisor.com/stays" className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
-          </div>
-          <div className="headerListItem">
+          </a>
+          <a href="https://kenya-airways.com/flights" className="headerListItem">
             <FontAwesomeIcon icon={faPlane} />
             <span>Flights</span>
-          </div>
-          <div className="headerListItem">
+          </a>
+          <a href="https://avis.com/car-rentals" className="headerListItem">
             <FontAwesomeIcon icon={faCar} />
             <span>Car rentals</span>
-          </div>
-          <div className="headerListItem">
+          </a>
+          <a href="https://magicalkenya.com/attractions" className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
             <span>Attractions</span>
-          </div>
-          <div className="headerListItem">
+          </a>
+          <a href="https://kenatco.co.ke/airport-taxis" className="headerListItem">
             <FontAwesomeIcon icon={faTaxi} />
             <span>Airport taxis</span>
-          </div>
+          </a>
         </div>
         {type !== "list" && (
           <>
@@ -90,7 +89,7 @@ const Header = ({ type }) => {
             </h1>
             <p className="headerDesc">
               Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Abdurleone account
+              more with a free Abdurleone account.
             </p>
             {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">

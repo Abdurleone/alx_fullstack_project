@@ -18,20 +18,33 @@
 
 .headerList {
   display: flex;
+  justify-content: center; /* Center the items horizontally */
   gap: 40px;
   margin-bottom: 50px;
 }
 
 .headerListItem {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center; /* Center items horizontally */
   gap: 10px;
+  color: white; /* Default color for text and icons */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+  font-weight: bold; /* Make the text bold */
+  text-decoration: none; /* Remove underline */
 }
 
-.headerListItem.active {
-  border: 1px solid white;
-  padding: 10px;
-  border-radius: 20px;
+.headerListItem:hover {
+  color: #febb02; /* Change color to yellow on hover */
+}
+
+.headerListItem:hover a {
+  color: #febb02; /* Ensure link color changes on hover */
+}
+
+.headerListItem a {
+  color: inherit; /* Ensure links inherit the color from the parent */
+  text-decoration: none; /* Remove underline from links */
 }
 
 .headerDesc {
