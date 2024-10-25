@@ -10,8 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
 import { DateRange } from "react-date-range";
 import { useContext, useState } from "react";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext.js";
@@ -35,8 +35,8 @@ const Header = ({ type }) => {
   });
 
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
-  const { dispatch } = useContext(SearchContext);
+  const { user, dispatch } = useContext(AuthContext);
+  const { dispatch: searchDispatch } = useContext(SearchContext);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => ({
@@ -46,8 +46,13 @@ const Header = ({ type }) => {
   };
 
   const handleSearch = () => {
-    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    searchDispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
+  };
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
   };
 
   return (
@@ -101,6 +106,11 @@ const Header = ({ type }) => {
                     Register
                   </button>
                 </div>
+              )}
+              {user && (
+                <button className="headerBtn" onClick={handleLogout}>
+                  Logout
+                </button>
               )}
             </div>
 

@@ -38,12 +38,11 @@ const FeaturedProperties = () => {
           {selectedProperty && (
             <div className="fpDetails">
               <h2>{selectedProperty.name}</h2>
-              <p>{selectedProperty.description}</p> {/* Add description to your data if not available */}
+              <p>{selectedProperty.description}</p>
               <ul>
                 <li>City: {selectedProperty.city}</li>
                 <li>Price: Starting from ${selectedProperty.cheapestPrice}</li>
                 <li>Rating: {selectedProperty.rating}</li>
-                {/* Add more features as needed */}
               </ul>
               <button onClick={closeDetails}>Close</button>
             </div>
