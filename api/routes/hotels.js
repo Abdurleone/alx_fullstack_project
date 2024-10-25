@@ -9,26 +9,32 @@ import {
   getHotels,
   updateHotel,
 } from "../controllers/hotel.js";
-import Hotel from "../models/Hotel.js";
-import {verifyAdmin} from "../utils/verifyToken.js"
-const router = express.Router()
+import { verifyAdmin } from "../utils/verifyToken.js";
 
-//CREATE
-router.post("/", verifyAdmin, createHotel)
+const router = express.Router();
 
-//UPDATE
-router.put("/:id", verifyAdmin, updateHotel)
+// CREATE
+router.post("/", verifyAdmin, createHotel);
 
-//DELETE
-router.delete("/:id", verifyAdmin, deleteHotel)
+// UPDATE
+router.put("/:id", verifyAdmin, updateHotel);
 
-//GET
-router.get("/find/:id", getHotel)
+// DELETE
+router.delete("/:id", verifyAdmin, deleteHotel);
 
-//GET ALL
-router.get("/", getHotels)
-router.get("/countByCity", countByCity)
-router.get("/countByType", countByType)
-router.get("/room/:id", getHotelRooms)
+// GET a hotel by ID
+router.get("/find/:id", getHotel);
 
-export default router
+// GET all hotels
+router.get("/", getHotels);
+
+// GET count of hotels by city
+router.get("/countByCity", countByCity);
+
+// GET count of hotels by type
+router.get("/countByType", countByType);
+
+// GET hotel rooms by hotel ID
+router.get("/room/:id", getHotelRooms);
+
+export default router;
