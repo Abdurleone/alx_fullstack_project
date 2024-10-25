@@ -33,7 +33,7 @@ const Login = () => {
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
+      navigate("/"); // Redirect after successful login
     } catch (err) {
       console.error("Login error:", err); // Log the error for debugging
       dispatch({
@@ -46,7 +46,8 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
-        <form onSubmit={handleClick}> {/* Wrap inputs and button in a form */}
+        <h2 className="lTitle">Welcome Back!</h2> {/* Added title for user engagement */}
+        <form onSubmit={handleClick}>
           <input
             type="text"
             placeholder="Username"
@@ -55,6 +56,7 @@ const Login = () => {
             value={credentials.username}
             className="lInput"
             aria-label="Username" // Accessibility label
+            required // Mark as required for form validation
           />
           <input
             type="password"
@@ -64,15 +66,20 @@ const Login = () => {
             value={credentials.password}
             className="lInput"
             aria-label="Password" // Accessibility label
+            required // Mark as required for form validation
           />
           
           {inputError && <span className="errorMessage">{inputError}</span>} {/* Show input validation error */}
           
-          <button disabled={loading} type="submit" className="lButton"> {/* Change to type "submit" */}
-            {loading ? "Logging in..." : "Login"} {/* Show loading message */}
+          <button disabled={loading} type="submit" className="lButton">
+            {loading ? "Logging in..." : "Login"}
           </button>
           
           {error && <span className="errorMessage">{error.message}</span>} {/* Show server error message */}
+          
+          <div className="loginFooter"> {/* Added footer for extra links or info */}
+            <span>Don't have an account? <a href="/register">Register</a></span>
+          </div>
         </form>
       </div>
     </div>

@@ -61,23 +61,23 @@ const Header = ({ type }) => {
         }
       >
         <div className="headerList">
-          <a href="https://tripadvisor.com/stays" className="headerListItem">
+          <a href="https://tripadvisor.com" className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
           </a>
-          <a href="https://kenya-airways.com/flights" className="headerListItem">
+          <a href="https://kenya-airways.com" className="headerListItem">
             <FontAwesomeIcon icon={faPlane} />
             <span>Flights</span>
           </a>
-          <a href="https://avis.com/car-rentals" className="headerListItem">
+          <a href="https://avis.com" className="headerListItem">
             <FontAwesomeIcon icon={faCar} />
             <span>Car rentals</span>
           </a>
-          <a href="https://magicalkenya.com/attractions" className="headerListItem">
+          <a href="https://magicalkenya.com" className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
             <span>Attractions</span>
           </a>
-          <a href="https://kenatco.co.ke/airport-taxis" className="headerListItem">
+          <a href="https://kenatco.co.ke" className="headerListItem">
             <FontAwesomeIcon icon={faTaxi} />
             <span>Airport taxis</span>
           </a>
@@ -91,7 +91,14 @@ const Header = ({ type }) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free Abdurleone account.
             </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
+            {!user && (
+              <button
+                className="headerBtn"
+                onClick={() => navigate("/login")} // Redirect to login page
+              >
+                Sign in
+              </button>
+            )}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
