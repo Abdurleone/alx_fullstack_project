@@ -1,32 +1,150 @@
+/* Main login container */
 .login {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the container horizontally */
+  background: url('https://source.unsplash.com/random/1920x1080/?nature,water') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* Overlay for the background */
+.login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Container for the login form */
+.lContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between items */
+  padding: 30px; /* Padding for container */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  max-width: 400px; /* Set a max-width for larger screens */
+  width: 90%; /* Make it responsive on smaller screens */
+}
+
+/* Title styles */
+.lTitle {
+  text-align: center;
+  margin-bottom: 15px; /* Reduced margin below title */
+  font-size: 24px; /* Adjusted font size */
+  color: #0071c2;
+}
+
+/* Input field styles */
+.lInput {
+  height: 35px; /* Reduced height */
+  padding: 8px; /* Adjusted padding for smaller input */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 16px; /* Font size remains the same */
+  width: 100%; /* Full width within the container */
+}
+
+/* Input focus effect */
+.lInput:focus {
+  border-color: #0071c2;
+  box-shadow: 0 0 10px rgba(0, 113, 194, 0.5);
+  outline: none;
+}
+
+/* Button container styles */
+.buttonContainer {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center the button */
+}
+
+/* Button styles */
+.lButton {
+  height: 35px; /* Reduced button height */
+  border: none;
+  padding: 10px;
+  background: linear-gradient(135deg, #0071c2, #005fa3);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px; /* Adjusted font size */
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+.lButton:hover {
+  background: linear-gradient(135deg, #005fa3, #004080);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Disabled button style */
+.lButton:disabled {
+  background-color: #0071c28c;
+  cursor: not-allowed;
+}
+
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Error message styles */
+.errorMessage {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Footer styles */
+.loginFooter {
+  text-align: center;
+  margin-top: 10px; /* Reduced margin above footer */
+  font-size: 14px;
+}
+
+.loginFooter a {
+  color: #0071c2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Footer link hover effect */
+.loginFooter a:hover {
+  color: #005fa3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
   .lContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding: 20px; /* Less padding on smaller screens */
   }
-  
-  .lInput{
-    height: 30px;
-    padding: 10px;
+
+  .lTitle {
+    font-size: 22px; /* Smaller title font on mobile */
   }
-  
+
+  .lInput,
   .lButton {
-    border: none;
-    padding: 10px 20px;
-    background-color: #0071c2;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
+    font-size: 14px; /* Smaller font size for inputs and buttons */
   }
-  
-  .lButton:disabled{
-    background-color: #0071c28c;
-    cursor: not-allowed;
-  }
+}
