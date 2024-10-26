@@ -1,3 +1,10 @@
+:root {
+  --font-color: white; /* Unified font color variable */
+  --secondary-font-color: #333; /* For secondary text color */
+  --button-bg-color: #ffffff; /* Button background color */
+  --button-hover-bg-color: #f8f8f8; /* Button hover color */
+}
+
 .fp {
   width: 100%;
   max-width: 1024px; /* Max width for larger screens */
@@ -30,24 +37,26 @@
 }
 
 .fpName {
-  color: #333;
+  color: var(--secondary-font-color); /* Use unified secondary font color */
   font-weight: bold;
   font-size: 16px; /* Ensure readable font size */
 }
 
 .fpCity {
+  color: var(--font-color); /* Use unified font color */
   font-weight: 300;
   font-size: 14px; /* Adjust font size for clarity */
 }
 
 .fpPrice {
+  color: var(--font-color); /* Use unified font color */
   font-weight: 500;
   font-size: 16px; /* Keep consistent sizing */
 }
 
 .fpRating > button {
-  background-color: #003580;
-  color: white;
+  background-color: var(--button-bg-color); /* Use button background color variable */
+  color: var(--font-color); /* Use unified font color */
   border: none;
   padding: 3px 5px; /* Add padding for better button size */
   margin-right: 10px;
@@ -57,6 +66,7 @@
 
 .fpRating > span {
   font-size: 14px;
+  color: var(--font-color); /* Use unified font color */
 }
 
 .fpDetails {
@@ -80,8 +90,8 @@
 
 .fpDetails button {
   margin-top: 10px;
-  background-color: #007BFF; /* Primary button color */
-  color: white;
+  background-color: var(--button-bg-color); /* Primary button color */
+  color: var(--font-color); /* Use unified font color */
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -90,5 +100,5 @@
 }
 
 .fpDetails button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: var(--button-hover-bg-color); /* Darker shade on hover */
 }

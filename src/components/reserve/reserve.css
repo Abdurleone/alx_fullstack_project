@@ -1,78 +1,117 @@
 .reserve {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.418);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .rContainer {
-    background-color: white;
-    padding: 20px;
-    position: relative;
-  }
-  
-  .rClose {
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-  }
-  
-  .rItem {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    padding: 20px;
-  }
-  
-  .rInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .rTitle {
-    font-weight: 500;
-  }
-  
-  .rDesc {
-    font-weight: 300;
-  }
-  
-  .rMax {
-    font-size: 12px;
-  }
-  
-  .rPrice {
-    font-weight: 500;
-  }
-  
-  .rSelectRooms{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    font-size: 8px;
-    color: gray;
-  }
-  
-  .room{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .rButton {
-    border: none;
-    padding: 10px 20px;
-    background-color: #0071c2;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%;
-    margin-top: 20px;
-  }
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker for better contrast */
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.rContainer {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  width: 90%; /* Responsive width */
+  max-width: 600px; /* Limit max width */
+  position: relative;
+}
+
+.rClose {
+  position: absolute;
+  top: 15px; /* Adjusted for better alignment */
+  right: 15px; /* Adjusted for better alignment */
+  cursor: pointer;
+  color: #ff5c5c; /* Close icon color */
+  font-size: 1.5em; /* Bigger for better accessibility */
+  transition: color 0.3s; /* Smooth color change */
+}
+
+.rClose:hover {
+  color: #ff0000; /* Change color on hover */
+}
+
+.rItem {
+  display: flex;
+  align-items: flex-start; /* Align items at the start for better spacing */
+  gap: 20px; /* Reduced gap for compactness */
+  padding: 15px; /* Reduced padding for a tighter layout */
+  border-bottom: 1px solid #eaeaea; /* Light bottom border for separation */
+  transition: background-color 0.2s; /* Smooth background change */
+}
+
+.rItem:hover {
+  background-color: #f9f9f9; /* Light gray on hover */
+}
+
+.rInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rTitle {
+  font-weight: 600; /* Bolder for emphasis */
+  font-size: 1.2em; /* Increased font size */
+}
+
+.rDesc {
+  font-weight: 400; /* Slightly bolder */
+  color: #666; /* Subtle gray for description */
+}
+
+.rMax {
+  font-size: 0.9em; /* Slightly larger for readability */
+  color: #777; /* Soft gray color */
+}
+
+.rPrice {
+  font-weight: 600; /* Bolder for emphasis */
+  font-size: 1.1em; /* Slightly larger for emphasis */
+  color: #0071c2; /* Primary color for price */
+}
+
+.rSelectRooms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Increased gap for better spacing */
+  font-size: 0.9em; /* Slightly larger for readability */
+  color: gray;
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align labels */
+}
+
+.room input {
+  margin-top: 5px; /* Space between label and checkbox */
+}
+
+.rButton {
+  border: none;
+  padding: 12px 20px; /* Slightly larger padding */
+  background-color: #0071c2; /* Primary button color */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 1em; /* Increased font size */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.rButton:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.rButton:disabled {
+  background-color: #ccc; /* Disabled button color */
+  cursor: not-allowed; /* Change cursor */
+}

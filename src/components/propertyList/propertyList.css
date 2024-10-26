@@ -1,51 +1,51 @@
 .pList {
   width: 100%;
-  max-width: 1024px; /* Maximum width of the property list */
+  max-width: 1024px;
   display: flex;
-  justify-content: space-between; /* Distribute space between items */
-  gap: 20px; /* Gap between items */
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .pListItem {
-  flex: 1; /* Allow each item to grow equally */
-  border-radius: 10px; /* Rounded corners for each item */
-  overflow: hidden; /* Hide overflow for rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .pListItem:hover {
-  transform: scale(1.05); /* Scale up on hover */
+  transform: scale(1.05);
 }
 
 .pListImg {
-  width: 100%; /* Full width of the item */
-  height: 150px; /* Fixed height for images */
-  object-fit: cover; /* Maintain aspect ratio, cover the entire area */
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
 .pListTitles > h1,
 .pListTitles > h2 {
-  text-decoration: none; /* Remove underlines from titles */
-  margin: 10px 0 5px; /* Margins for spacing */
+  text-decoration: none;
+  margin: 10px 0 5px;
 }
 
 .pListTitles > h1 {
-  font-size: 18px; /* Font size for main title */
-  color: #444; /* Dark gray color for title */
+  font-size: 18px;
+  color: #444;
 }
 
 .pListTitles > h2 {
-  font-size: 14px; /* Font size for subtitle */
-  font-weight: 300; /* Light font weight for subtitle */
-  color: #777; /* Slightly lighter gray for better contrast */
-  margin: 0; /* Remove default margin */
+  font-size: 14px;
+  font-weight: 300;
+  color: #777;
+  margin: 0;
 }
 
 
 .pListTitles > h2 {
-  font-size: 14px; /* Font size for subtitle */
-  font-weight: 300; /* Light font weight for subtitle */
-  color: #777; /* Slightly lighter gray for better contrast */
-  margin: 0; /* Remove default margin */
+  font-size: 14px;
+  font-weight: 300;
+  color: #777;
+  margin: 0;
 }
