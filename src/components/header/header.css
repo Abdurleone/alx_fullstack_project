@@ -53,16 +53,36 @@
   margin-bottom: 20px; /* Space below the buttons */
 }
 
-.headerRegisterBox {
-  border: 2px solid #febb02; /* Border to distinguish the register box */
+.headerButton {
+  background-color: #0071c2; /* Default background color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding for a better button size */
   border-radius: 5px; /* Rounded corners */
-  padding: 5px; /* Padding inside the box */
-  background-color: transparent; /* No background color initially */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-  color: #febb02; /* Set text color initially */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
-.headerRegisterBox:hover {
+.headerButton:hover {
+  background-color: #005fa3; /* Darker background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.headerButton:active {
+  transform: translateY(1px); /* Press down effect */
+}
+
+.headerButton:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px #febb02; /* Yellow focus ring */
+}
+
+/* Change color of the button text on hover */
+.headerButtons:hover .headerButton {
+  color: #febb02; /* Change text color to yellow on hover */
+}
+
+.headerRegister:hover {
   background-color: #febb02; /* Highlight color on hover */
   color: black; /* Change text color on hover */
 }
