@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch.js";
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch("/hotels?featured=true&limit=4");
+  const { data, loading, error } = useFetch("/hotels?featured=true&limit=3");
   const [selectedProperty, setSelectedProperty] = useState(null);
 
   const handlePropertyClick = (property) => {

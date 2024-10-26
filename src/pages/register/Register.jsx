@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './register.css'; // Import your CSS file for styling
-import { register } from '../../services/authService.js'; // Ensure this import is correct
+import { register } from '../../services/authService'; // Ensure this is correctly imported
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -18,16 +18,15 @@ const Register = () => {
     }
 
     try {
-      // Call your register function from the auth service
-      await register({ username, email, password });
+      await register({ username, email, password }); // Only send these fields
+      setError('');
       // Clear fields
       setUsername('');
       setEmail('');
       setPassword('');
-      setError('');
-      // Optionally navigate to a different page after successful registration
+      // You can navigate to a different page after successful registration
     } catch (err) {
-      setError(err.message); // Set error message from the response
+      setError(err.response?.data?.message || 'Registration failed');
     }
   };
 

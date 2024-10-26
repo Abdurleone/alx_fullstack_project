@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.js";
-import "./login.css";
+import "./login.css"; // Ensure this is updated with the latest styles
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -11,7 +11,7 @@ const Login = () => {
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
-  const [inputError, setInputError] = useState(null); 
+  const [inputError, setInputError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,18 +21,19 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
+    // Validate input fields
     if (!credentials.username || !credentials.password) {
       setInputError("Please fill in both username and password.");
       return;
     }
 
-    setInputError(null);
+    setInputError(null); // Clear any previous input error
 
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
+      navigate("/"); // Redirect to home after successful login
     } catch (err) {
       console.error("Login error:", err);
       dispatch({
@@ -67,19 +68,21 @@ const Login = () => {
             aria-label="Password"
             required
           />
-          
+
+          {/* Display input error message if any */}
           {inputError && <span className="errorMessage">{inputError}</span>}
-          
+
           <button 
-            disabled={loading} // This should control whether the button is clickable
-            type="submit" // Ensure this is set correctly
+            disabled={loading} // Disable button while loading
+            type="submit" // Ensure this is set correctly for form submission
             className="lButton"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
-          
+
+          {/* Display error message from login response */}
           {error && <span className="errorMessage">{error.message}</span>} 
-          
+
           <div className="loginFooter">
             <span>Don't have an account? <a href="/register">Register</a></span>
           </div>
