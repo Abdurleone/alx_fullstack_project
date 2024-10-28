@@ -13,21 +13,24 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Define the main route for the home page */}
+        {/* Main route for the home page */}
         <Route path="/" element={<Home />} />
-        
+
         {/* Route for the hotel list */}
         <Route path="/hotels" element={<List />} />
-        
+
         {/* Dynamic route for individual hotel details */}
         <Route path="/hotels/:id" element={<Hotel />} />
-        
+
+        {/* Additional route for "/properties/hotel" if needed */}
+        <Route path="/properties/hotel" element={<Hotel />} />
+
         {/* Route for the login page */}
         <Route path="/login" element={<Login />} />
-        
+
         {/* Route for listing hotels by city */}
         <Route path="/city/:cityName" element={<List />} />
-        
+
         {/* Route for the registration page */}
         <Route path="/register" element={<Register />} />
       </Routes>

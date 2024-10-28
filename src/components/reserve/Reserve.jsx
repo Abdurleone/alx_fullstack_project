@@ -11,6 +11,7 @@ const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
+  const navigate = useNavigate();
 
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -26,7 +27,10 @@ const Reserve = ({ setOpen, hotelId }) => {
     return dates;
   };
 
-  const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
+  // Add fallback if `dates` is not available
+  const alldates = dates?.[0]?.startDate && dates?.[0]?.endDate
+    ? getDatesInRange(dates[0].startDate, dates[0].endDate)
+    : [];
 
   const isAvailable = (roomNumber) => {
     return !roomNumber.unavailableDates.some((date) =>
@@ -41,8 +45,6 @@ const Reserve = ({ setOpen, hotelId }) => {
       checked ? [...prev, value] : prev.filter((item) => item !== value)
     );
   };
-
-  const navigate = useNavigate();
 
   const handleClick = async () => {
     try {
@@ -61,7 +63,6 @@ const Reserve = ({ setOpen, hotelId }) => {
     }
   };
 
-  // Calculate total price for selected rooms
   const totalPrice = selectedRooms.reduce((total, roomId) => {
     const room = data.find((item) =>
       item.roomNumbers.some((room) => room._id === roomId)
@@ -78,11 +79,11 @@ const Reserve = ({ setOpen, hotelId }) => {
           onClick={() => setOpen(false)}
         />
         <h2>Select your rooms:</h2>
-        
+
         {loading ? (
-          <p>Loading...</p> // Loading indicator
+          <p>Loading...</p>
         ) : error ? (
-          <p className="error">Error: {error}</p> // Error message
+          <p className="error">Error: {error}</p>
         ) : (
           data.map((item) => (
             <div className="rItem" key={item._id}>
@@ -110,13 +111,17 @@ const Reserve = ({ setOpen, hotelId }) => {
             </div>
           ))
         )}
-        
+
         <div className="summary">
           <h3>Selected Rooms: {selectedRooms.length}</h3>
           <h4>Total Price: ${totalPrice}</h4>
         </div>
 
-        <button onClick={handleClick} className="rButton" disabled={selectedRooms.length === 0}>
+        <button
+          onClick={handleClick}
+          className="rButton"
+          disabled={selectedRooms.length === 0}
+        >
           Reserve Now!
         </button>
       </div>

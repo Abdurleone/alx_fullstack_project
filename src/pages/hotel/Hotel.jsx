@@ -28,7 +28,7 @@ const Hotel = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const { dates, options } = useContext(SearchContext);
+  const { dates = [{ startDate: new Date(), endDate: new Date() }], options = { room: 1 } } = useContext(SearchContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -37,7 +37,7 @@ const Hotel = () => {
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dates[0] ? dayDifference(new Date(dates[0].endDate), new Date(dates[0].startDate)) : 1;
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -58,11 +58,12 @@ const Hotel = () => {
 
   const handleClick = () => {
     if (user) {
-      setOpenModal(true);
+      setOpenModal(true); // Opens the modal when the user is logged in
     } else {
-      navigate("/login");
+      navigate("/login"); // Redirects to login if not logged in
     }
   };
+
   return (
     <div>
       <Navbar />
@@ -98,7 +99,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -146,7 +147,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />} {/* Reservation modal */}
     </div>
   );
 };
