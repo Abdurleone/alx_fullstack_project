@@ -16,20 +16,22 @@ const PropertyList = () => {
   return (
     <div className="pList">
       {loading ? (
-        "Loading..."
+        <div>Loading...</div>
+      ) : error ? (
+        <div className="error">Error loading properties</div>
       ) : (
-        <>
-          {data &&
-            images.map((img, i) => (
-              <Link to={`/properties/${data[i]?.type}`} key={i} className="pListItem"> {/* Link for each property */}
-                <img src={img} alt={data[i]?.type} className="pListImg" />
-                <div className="pListTitles">
-                  <h1>{data[i]?.type}</h1>
-                  <h2>{data[i]?.count} {data[i]?.type}</h2>
-                </div>
-              </Link>
-            ))}
-        </>
+        data &&
+        images.map((img, i) => (
+          <Link to={`/properties/${data[i]?.type}`} key={i} className="pListItem">
+            <img src={img} alt={data[i]?.type} className="pListImg" />
+            <div className="pListTitles">
+              <h1>{data[i]?.type}</h1>
+              <h2>
+                {data[i]?.count} {data[i]?.type}
+              </h2>
+            </div>
+          </Link>
+        ))
       )}
     </div>
   );

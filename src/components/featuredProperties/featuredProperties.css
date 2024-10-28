@@ -1,6 +1,6 @@
 :root {
-  --font-color: white; /* Unified font color variable */
-  --secondary-font-color: #333; /* For secondary text color */
+  --font-color: white; /* Unified font color */
+  --secondary-font-color: #333; /* Secondary text color */
   --button-bg-color: #ffffff; /* Button background color */
   --button-hover-bg-color: #f8f8f8; /* Button hover color */
 }
@@ -9,21 +9,21 @@
   width: 100%;
   max-width: 1024px; /* Max width for larger screens */
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap for smaller screens */
-  justify-content: space-between;
+  flex-wrap: wrap; /* Items wrap for smaller screens */
+  justify-content: flex-start; /* Aligns items to the start */
   gap: 20px; /* Space between items */
-  margin: 0 auto; /* Center align the container */
+  margin: 0 auto; /* Center aligns the container */
+  padding-left: 20px; /* Optional padding */
 }
 
 .fpItem {
-  flex: 1 1 200px; /* Allow flex items to grow, shrink, and have a base width */
-  gap: 10px;
+  flex: 1 1 200px; /* Grow, shrink, with base width */
   display: flex;
   flex-direction: column;
-  border-radius: 10px; /* Optional: for rounded corners */
-  overflow: hidden; /* Ensure no overflow */
-  cursor: pointer; /* Indicate clickable items */
-  transition: transform 0.2s; /* Smooth transition for hover effects */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* No overflow */
+  cursor: pointer;
+  transition: transform 0.2s; /* Hover transition */
 }
 
 .fpItem:hover {
@@ -37,68 +37,68 @@
 }
 
 .fpName {
-  color: var(--secondary-font-color); /* Use unified secondary font color */
+  color: var(--secondary-font-color); /* Secondary font color */
   font-weight: bold;
-  font-size: 16px; /* Ensure readable font size */
+  font-size: 16px;
 }
 
-.fpCity {
-  color: var(--font-color); /* Use unified font color */
+.fpCity,
+.fpPrice {
+  color: var(--font-color); /* Unified font color */
   font-weight: 300;
-  font-size: 14px; /* Adjust font size for clarity */
+  font-size: 14px;
 }
 
 .fpPrice {
-  color: var(--font-color); /* Use unified font color */
   font-weight: 500;
-  font-size: 16px; /* Keep consistent sizing */
+  font-size: 16px; /* Consistent sizing */
 }
 
 .fpRating > button {
-  background-color: var(--button-bg-color); /* Use button background color variable */
-  color: var(--font-color); /* Use unified font color */
+  background-color: var(--button-bg-color); /* Button color */
+  color: var(--font-color); /* Font color */
   border: none;
-  padding: 3px 5px; /* Add padding for better button size */
+  padding: 3px 5px;
   margin-right: 10px;
   font-weight: bold;
-  border-radius: 5px; /* Optional: for rounded button */
+  border-radius: 5px; /* Rounded button */
 }
 
 .fpRating > span {
   font-size: 14px;
-  color: var(--font-color); /* Use unified font color */
+  color: var(--font-color); /* Font color */
 }
 
 .fpDetails {
-  position: fixed; /* Position it in the center */
+  position: fixed; /* Centers the element */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Ensure it’s on top of other elements */
+  z-index: 1000; /* On top */
   max-width: 90%; /* Responsive width */
-  border-radius: 10px; /* Optional: rounded corners */
-  overflow-y: auto; /* Scroll if content exceeds height */
+  border-radius: 10px; /* Rounded corners */
+  overflow-y: auto; /* Scroll if overflow */
 }
 
 .fpDetails ul {
-  list-style-type: none; /* Remove bullet points */
-  padding: 0; /* Remove padding */
+  list-style-type: none; /* No bullets */
+  padding: 0;
 }
 
 .fpDetails button {
   margin-top: 10px;
-  background-color: var(--button-bg-color); /* Primary button color */
-  color: var(--font-color); /* Use unified font color */
+  background-color: var(--button-bg-color); /* Button color */
+  color: var(--font-color); /* Font color */
   border: none;
   padding: 10px;
   cursor: pointer;
-  border-radius: 5px; /* Rounded button */
+  border-radius: 5px;
   transition: background-color 0.3s; /* Smooth transition */
 }
 
 .fpDetails button:hover {
-  background-color: var(--button-hover-bg-color); /* Darker shade on hover */
+  background-color: var(--button-hover-bg-color); /* Hover color */
 }
