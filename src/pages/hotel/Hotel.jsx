@@ -24,6 +24,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
+  // eslint-disable-next-line no-unused-vars
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
