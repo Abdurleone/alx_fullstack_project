@@ -46,13 +46,11 @@ const Hotel = () => {
 
   const handleMove = (direction) => {
     let newSlideNumber;
-
     if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+      newSlideNumber = slideNumber === 0 ? data.photos.length - 1 : slideNumber - 1;
     } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+      newSlideNumber = slideNumber === data.photos.length - 1 ? 0 : slideNumber + 1;
     }
-
     setSlideNumber(newSlideNumber);
   };
 
@@ -69,10 +67,10 @@ const Hotel = () => {
       <Navbar />
       <Header type="list" />
       {loading ? (
-        "loading"
+        "Loading..."
       ) : (
         <div className="hotelContainer">
-          {open && (
+          {open && data.photos && (
             <div className="slider">
               <FontAwesomeIcon
                 icon={faCircleXmark}
@@ -87,7 +85,7 @@ const Hotel = () => {
               <div className="sliderWrapper">
                 <img
                   src={data.photos[slideNumber]}
-                  alt=""
+                  alt="Hotel"
                   className="sliderImg"
                 />
               </div>
@@ -136,8 +134,7 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
-                  nights)
+                  <b>Ksh.{days * data.cheapestPrice * options.room}</b> ({days} nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
@@ -147,7 +144,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />} {"/reserve"}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
