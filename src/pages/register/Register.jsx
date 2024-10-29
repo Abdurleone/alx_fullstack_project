@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './register.css'; // Import your CSS file for styling
-import { register } from '../../services/authService'; // Ensure this is correctly imported
+import { register } from '../../services/authService.js'; // Ensure this is correctly imported
 
 const Register = () => {
   const [username, setUsername] = useState('');
