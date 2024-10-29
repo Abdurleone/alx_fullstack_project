@@ -24,7 +24,6 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  // eslint-disable-next-line no-unused-vars
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -59,9 +58,9 @@ const Hotel = () => {
 
   const handleClick = () => {
     if (user) {
-      setOpenModal(true); // Opens the modal when the user is logged in
+      setOpenModal(true);
     } else {
-      navigate("/login"); // Redirects to login if not logged in
+      navigate("/login");
     }
   };
 
@@ -148,7 +147,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />} {/* Reservation modal */}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />} {"/reserve"}
     </div>
   );
 };
