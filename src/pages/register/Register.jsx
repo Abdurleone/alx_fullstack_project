@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './register.css'; // Import your CSS file for styling
-import { register } from '../../services/authService.js'; // Ensure this is correctly imported
+import './register.css';
+import { register } from '../../services/authService.js';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -11,20 +11,17 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation (you can enhance this)
     if (!username || !email || !password) {
       setError('All fields are required');
       return;
     }
 
     try {
-      await register({ username, email, password }); // Only send these fields
+      await register({ username, email, password });
       setError('');
-      // Clear fields
       setUsername('');
       setEmail('');
       setPassword('');
-      // You can navigate to a different page after successful registration
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
