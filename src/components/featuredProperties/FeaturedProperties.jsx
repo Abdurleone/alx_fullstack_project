@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch.js";
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
+  // eslint-disable-next-line no-unused-vars
   const { data, loading, error } = useFetch("/hotels?featured=true&limit=3");
   const [selectedProperty, setSelectedProperty] = useState(null);
 
@@ -41,7 +42,7 @@ const FeaturedProperties = () => {
               <p>{selectedProperty.description}</p>
               <ul>
                 <li>City: {selectedProperty.city}</li>
-                <li>Price: Starting from ${selectedProperty.cheapestPrice}</li>
+                <li>Price: Starting from Ksh{selectedProperty.cheapestPrice}</li>
                 <li>Rating: {selectedProperty.rating}</li>
               </ul>
               <button onClick={closeDetails}>Close</button>

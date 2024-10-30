@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Featured from "../../components/featured/Featured.jsx";
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties.jsx";
 import Footer from "../../components/footer/Footer.jsx";
@@ -8,18 +9,37 @@ import PropertyList from "../../components/propertyList/PropertyList.jsx";
 import "./home.css";
 
 const Home = () => {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("status") === "loginSuccess") {
+      setMessage("You have successfully logged in.");
+    } else if (params.get("status") === "logoutSuccess") {
+      setMessage("You have successfully logged out.");
+    }
+
+    // Clear message after 3 seconds
+    const timer = setTimeout(() => setMessage(""), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div>
       <Navbar />
-      <Header/>
+      <Header />
+      
+      {/* Display login/logout message if present */}
+      {message && <div className="statusMessage">{message}</div>}
+      
       <div className="homeContainer">
-        <Featured/>
+        <Featured />
         <h1 className="homeTitle">Browse by property type</h1>
-        <PropertyList/>
+        <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
-        <FeaturedProperties/>
-        <MailList/>
-        <Footer/>
+        <FeaturedProperties />
+        <MailList />
+        <Footer />
       </div>
     </div>
   );

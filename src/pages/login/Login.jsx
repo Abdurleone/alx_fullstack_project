@@ -1,18 +1,27 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.js";
-import "./login.css"; // Ensure this is updated with the latest styles
+import "./login.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
-
   const { loading, error, dispatch } = useContext(AuthContext);
   const [inputError, setInputError] = useState(null);
+  const [logoutMessage, setLogoutMessage] = useState(false); // State for logout message
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check for logout message query param (if redirecting from logout)
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("logout") === "true") {
+      setLogoutMessage(true);
+      setTimeout(() => setLogoutMessage(false), 3000); // Clear message after 3 seconds
+    }
+  }, []);
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -47,6 +56,12 @@ const Login = () => {
     <div className="login">
       <div className="lContainer">
         <h2 className="lTitle">Welcome Back!</h2>
+        
+        {/* Display logout message if user has logged out */}
+        {logoutMessage && (
+          <div className="logoutMessage">You have successfully logged out.</div>
+        )}
+
         <form onSubmit={handleClick}>
           <input
             type="text"
@@ -73,8 +88,8 @@ const Login = () => {
           {inputError && <span className="errorMessage">{inputError}</span>}
 
           <button 
-            disabled={loading} // Disable button while loading
-            type="submit" // Ensure this is set correctly for form submission
+            disabled={loading}
+            type="submit"
             className="lButton"
           >
             {loading ? "Logging in..." : "Login"}
