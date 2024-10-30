@@ -27,10 +27,11 @@ const Reserve = ({ setOpen, hotelId }) => {
     return dates;
   };
 
-  // Add fallback if `dates` is not available
   const alldates = dates?.[0]?.startDate && dates?.[0]?.endDate
     ? getDatesInRange(dates[0].startDate, dates[0].endDate)
     : [];
+
+  const numberOfNights = alldates.length;
 
   const isAvailable = (roomNumber) => {
     return !roomNumber.unavailableDates.some((date) =>
@@ -41,9 +42,14 @@ const Reserve = ({ setOpen, hotelId }) => {
   const handleSelect = (e) => {
     const checked = e.target.checked;
     const value = e.target.value;
-    setSelectedRooms((prev) =>
-      checked ? [...prev, value] : prev.filter((item) => item !== value)
-    );
+    setSelectedRooms((prev) => {
+      const updatedRooms = checked 
+        ? [...prev, value] 
+        : prev.filter((item) => item !== value);
+      
+      console.log("Updated selected rooms:", updatedRooms); // Log the updated rooms
+      return updatedRooms;
+    });
   };
 
   const handleClick = async () => {
@@ -58,7 +64,7 @@ const Reserve = ({ setOpen, hotelId }) => {
       setOpen(false);
       navigate("/");
     } catch (err) {
-      console.error("Reservation error:", err);
+      console.error("Reservation error:", err.response ? err.response.data : err.message);
       alert("Failed to reserve rooms. Please try again.");
     }
   };
@@ -67,7 +73,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     const room = data.find((item) =>
       item.roomNumbers.some((room) => room._id === roomId)
     );
-    return total + (room ? room.price : 0);
+    return total + (room ? room.price * numberOfNights : 0);
   }, 0);
 
   return (
@@ -93,7 +99,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <div className="rMax">
                   Max people: <b>{item.maxPeople}</b>
                 </div>
-                <div className="rPrice">${item.price}</div>
+                <div className="rPrice">${item.price} per night</div>
               </div>
               <div className="rSelectRooms">
                 {item.roomNumbers.map((roomNumber) => (
