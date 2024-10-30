@@ -12,7 +12,6 @@ dotenv.config();
 
 const app = express();
 
-// Check if MONGO environment variable is set
 const mongoUri = process.env.MONGO;
 if (!mongoUri) {
     console.error("MONGO environment variable not set.");
