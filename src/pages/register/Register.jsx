@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './register.css';
 import { register } from '../../services/authService.js';
 
@@ -20,14 +20,35 @@ const Register = () => {
         try {
             await register({ username, email, password });
             setError('');
-            setUsername('');
-            setEmail('');
-            setPassword('');
             setMessage('Registration successful!');
+            resetForm();
         } catch (err) {
             setError(err.response?.data?.message || 'Registration failed');
         }
     };
+
+    const resetForm = () => {
+        setUsername('');
+        setEmail('');
+        setPassword('');
+    };
+
+    // Clears error message when user types in any field
+    const handleInputChange = (setter) => (e) => {
+        setter(e.target.value);
+        setError('');
+    };
+
+    // Automatically clear success/error messages after 3 seconds
+    useEffect(() => {
+        if (message || error) {
+            const timer = setTimeout(() => {
+                setMessage('');
+                setError('');
+            }, 3000);
+            return () => clearTimeout(timer); // Cleanup on component unmount
+        }
+    }, [message, error]);
 
     return (
         <div className="register">
@@ -41,7 +62,7 @@ const Register = () => {
                         type="text"
                         id="username"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={handleInputChange(setUsername)}
                         required
                     />
                 </div>
@@ -51,7 +72,7 @@ const Register = () => {
                         type="email"
                         id="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleInputChange(setEmail)}
                         required
                     />
                 </div>
@@ -61,7 +82,7 @@ const Register = () => {
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={handleInputChange(setPassword)}
                         required
                     />
                 </div>
