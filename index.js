@@ -1,8 +1,21 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import winston from "winston"
+
 const app = express()
 dotenv.config()
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: "app.log" }),
+  ],
+});
+
+logger.info("Application started");
 
 const connect = async () => {
   try {
