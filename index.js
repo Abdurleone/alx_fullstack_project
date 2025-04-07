@@ -4,12 +4,13 @@ import mongoose from "mongoose"
 const app = express()
 dotenv.config()
 
-const connect = async ()=>{
-    try {
+const connect = async () => {
+  try {
     await mongoose.connect(process.env.MONGO);
-    console.log("Conneted to MongoDB")
+    console.log("Connected to MongoDB");
   } catch (error) {
-    throw error;
+    console.error("Failed to connect to MongoDB, retrying in 5 seconds...");
+    setTimeout(connect, 5000); // Retry after 5 seconds
   }
 };
 
